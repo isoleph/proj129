@@ -1,17 +1,21 @@
 import tkinter as tk
 
-variables = ('Mass A', 'Mass B', 'Mass C');
+masses = ('Mass A', 'Mass B', 'Mass C');
+
+global L, M; # starting coordinates
+L = [(100,100), (200,200), (300,200)];
+M = [];
 
 def main():
     return 0;
 
 # create a dictionary of values in the list
-def form(master, variables):
+def form(master, masses):
 
    entries = {};
-   for variable in variables:
+   for mass in masses:
       row = tk.Frame(master);
-      label = tk.Label(row, width=10, text=variable+": ", anchor='w');
+      label = tk.Label(row, width=10, text=mass+": ", anchor='w');
 
       entry = tk.Entry(row);
       entry.insert(0, "0");
@@ -20,7 +24,7 @@ def form(master, variables):
       row.pack(side=tk.TOP, fill=tk.X, padx=5, pady=5);
       label.pack(side=tk.LEFT);
       entry.pack(side=tk.LEFT, expand=False, fill=tk.X);
-      entries[variable] = entry 
+      entries[mass] = entry 
 
    return entries;
 
@@ -56,7 +60,7 @@ class drag(tk.Frame):
         (x, y) = coord 
         self.canvas.create_oval(x-10, y-10, x+10, y+10,
                  outline=color, fill=color, tags="token");
-
+        # send out initial coordinates 
         return 0;
 
     # collect position when clicked
@@ -64,15 +68,14 @@ class drag(tk.Frame):
         self.collectData["item"] = self.canvas.find_closest(event.x, event.y)[0];
         self.collectData["x"] = event.x;
         self.collectData["y"] = event.y;
+        M.insert(0, (event.x, event.y))
 
         return 0;
 
     # collect position when released
     def onRelease(self, event):
         self.collectData["item"] = None;
-        self.collectData["x"] = 0;
-        self.collectData["y"] = 0;
-
+        L.insert(0,(event.x,event.y));
         return 0;
 
     # collect position as moved
@@ -98,7 +101,7 @@ if __name__ == "__main__":
     # set window size
     master.geometry("720x480");
     # determine entries from function waaay above
-    ents = form(master, variables);
+    ents = form(master, masses);
     master.bind('<Return>', (lambda event, e=ents: fetch(e)));
 
     # create buttons with commands! 
@@ -116,3 +119,6 @@ if __name__ == "__main__":
 
     # Drive!
     master.mainloop();
+
+print(L);
+print(M);
