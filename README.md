@@ -10,8 +10,9 @@ python module. This project take inspiration from this [Maple script](https://cl
 
 # Current Tasks
 
-- [x] Creating tkinter GUI 
-- [ ] Position Tracking for each Mass
+- [x] Tokens for each particle
+- [x] Position Tracking for each Mass
+- [x] Mass sliders for input in GUI
 - [ ] Writing in Newtonian equations
 - [ ] Matplotlib render of contour plots
 - [ ] Refinement as needed
