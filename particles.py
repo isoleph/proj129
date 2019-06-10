@@ -41,16 +41,18 @@ class Drag(object):
         Upon doing so, this method will save the data of where the circle originally was,
         and it will identify where the mouse clicked.
         """
-        print(event.xdata, event.ydata);
         if event.inaxes != self.circ.axes:
             return None;
         contains, attrd = self.circ.contains(event);
         if not contains:
             return None;
 
-        print("Click detected");
+        print(event.xdata, event.ydata)
         x0, y0 = self.circ.center;
         self.press = x0, y0, event.xdata, event.ydata;
+        global Initiate;
+        Initiate = (event.xdata, event.ydata);
+
         return 0;
 
     def on_motion(self, event):
@@ -77,11 +79,19 @@ class Drag(object):
         resting position of the circle. This is intended to return the final value to our 
         proj129 script to update the positions for each mass."""
 
+        if event.inaxes != self.circ.axes:
+            return None
+        contains, attrd = self.circ.contains(event)
+        if not contains:
+            return None
+        
         self.press = None;
         self.fig.canvas.draw();
-        self.active["x"] = event.x;
-        self.active["y"] = event.y;
-        print(self.active)
+        print(event.xdata, event.ydata)
+
+        global Terminate;
+        Terminate = (event.xdata, event.ydata);
+
         return 0;
 
     def disconnect(self):
