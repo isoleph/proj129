@@ -12,9 +12,10 @@ This project takes inspiration from this [Maple script](https://climate.ucdavis.
 
 # Current Tasks
 
-- [ ] Tokens for each particle
-- [ ] Position Tracking for each Mass
+- [X] Tokens for each particle
+- [X] Position Tracking for each Mass
 - [x] Mass sliders for input in GUI
 - [x] Writing in Newtonian equations
 - [x] Matplotlib render of contour plots
+- [ ] Integration of Particle Tracking and Graphing
 - [ ] Refinement as needed
