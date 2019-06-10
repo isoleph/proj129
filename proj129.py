@@ -1,40 +1,115 @@
 #!/usr/bin/python3
 
-import tkinter as tk
-import tokens
-from tokens import drag
-from sliders import *
-
-def data():
-    sliders.get_input();
-    print("Your coordinates: ")
-    print("{}; {}; {}".format(tokens.posR, tokens.posG, tokens.posB));
-
-    return 0;
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider, Button
+import numpy as np
 
 
-if __name__ == "__main__":
+class GUI(object):
 
-    # initialize tk
-    master = tk.Tk();
+    # initiation upon GUI being called
+    def __init__(self):
+        u"Program initiates by creating figure and axes, then initiating \
+        the sliders and plot methods"
 
-    # set window name
-    master.wm_title("Gravitational Contour Plot");
+        # define matplotlib figure and axis
+        global fig; global ax;
+        fig, ax = plt.subplots(figsize=(6, 6));
+        fig.canvas.set_window_title('Interactive Gravitational Contour Graph');
+        plt.subplots_adjust(left=0.15, bottom=0.25);
+        plt.axis([0, 100, 0, 100]);
 
-    # set window size
-    master.geometry("1080x720");
+        # call on methods to make this work!
+        self.sliders();
+        self.plot();
+        return None;
 
-    # determine entries from sliders module
-    ents = sliders.render(master);
+    # function to plot contours
+    def plot(self):
+        u"Method to update masses from sliders and show \
+        results on GUI."
 
-    # create buttons with commands
-    b1 = tk.Button(master, text='Calculate', \
-                  command=data);
-    b1.pack(side=tk.BOTTOM);
+        print("Calculating...");
+        ax.clear();  # prevents contours from stacking
 
-    b2 = tk.Button(master, text='Quit', command=master.quit);
-    b2.pack(side=tk.RIGHT);
-    drag(master).pack(fill="both", expand=True);
+        # checks update to get masses from sliders
+        massR, massG, massB = GUI.update(self);
 
-    # Drive!
-    master.mainloop();
+        # create contour specs for each mass
+        x = np.arange(1, 10**2); y = x.copy();
+        X, Y = np.meshgrid(x, y); Z = np.sqrt(X**2+Y**2);
+
+        x_a = 20; y_a = 20;
+        xa_disp = (x_a-X)**2; ya_disp = (y_a-Y)**2;
+        ra_disp = np.sqrt(xa_disp + ya_disp);
+        Force_a = massR/ra_disp;
+
+        x_b = 40; y_b = 40;
+        xb_disp = (x_b-X)**2; yb_disp = (y_b-Y)**2;
+        rb_disp = np.sqrt(xb_disp + yb_disp);
+        Force_b = massG/rb_disp;
+
+        x_c = 60; y_c = 60;
+        xc_disp = (x_c-X)**2; yc_disp = (y_c-Y)**2;
+        rc_disp = np.sqrt(xc_disp + yc_disp);
+        Force_c = massB/rc_disp;
+        Displacement = Force_a+Force_b+Force_c;
+
+        l = ax.contour(X, Y, Displacement, 100);
+        plt.show();
+        return 0;
+
+    def sliders(self):
+        u"Method that creates the mass sliders on the bottom of the GUI"
+
+        axcolor = 'lightgoldenrodyellow'
+        axMassR = plt.axes([0.2, 0.17, 0.65, 0.03], facecolor=axcolor);
+        axMassG = plt.axes([0.2, 0.12, 0.65, 0.03], facecolor=axcolor);
+        axMassB = plt.axes([0.2, 0.07, 0.65, 0.03], facecolor=axcolor);
+
+        global s_massR; global s_massG; global s_massB;
+
+        s_massR = Slider(axMassR, 'Mass R', 0.1, 500.0, valinit=50, valstep=10, \
+                         color='red');
+        s_massG = Slider(axMassG, 'Mass G', 0.1, 500.0, valinit=50, valstep=10, \
+                         color='green');
+        s_massB = Slider(axMassB, 'Mass B', 0.1, 500.0, valinit=50, valstep=10, \
+                         color='blue');
+
+        global resetButton; global calcButton;
+
+        resetax = plt.axes([0.8, 0.9, 0.1, 0.04]);
+        resetButton = Button(resetax, 'Reset', color=axcolor, \
+                         hovercolor='0.975')
+        resetButton.on_clicked(GUI.reset);
+
+
+        calcax = plt.axes([0.65, 0.9, 0.15, 0.04]);
+        calcButton = Button(calcax, 'Calculate', color=axcolor, \
+                        hovercolor='0.975');
+        calcButton.on_clicked(GUI.plot);
+        return 0;
+
+    def reset(val):
+        u"Method that defines the Reset Button on the GUI"
+
+        print("Resetting!");
+        global resetButton; global calcButton;
+        global s_massR; global s_massG; global s_massB;
+        s_massR.reset(); s_massG.reset(); s_massB.reset();
+        return 0;
+
+    def update(self):
+        u"Method that updates all mass values from mass sliders"
+        global s_massR; global s_massG; global s_massB;
+        try:
+            mR = s_massR.val; # update all values from slider if possible
+            mG = s_massG.val;
+            mB = s_massB.val;
+            return mR, mG, mB;
+        except Exception:
+            return 50, 50, 50; # if sliders not yet activated, give this tuple
+
+
+if __name__ == '__main__':
+    g = GUI();

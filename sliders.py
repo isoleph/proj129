@@ -16,8 +16,9 @@ class sliders(tk.Frame):
       color = ['red', 'green', 'blue'];
       variables = ('Mass A', 'Mass B', 'Mass C');
       m_A = tk.DoubleVar(); m_B = tk.DoubleVar(); m_C = tk.DoubleVar();
+
       global masses;
-      masses = [m_A, m_B,m_C]
+      masses = [m_A, m_B,m_C];
 
       for variable, color, mass in zip(variables,color,masses):
          row = tk.Frame();
@@ -44,6 +45,6 @@ class sliders(tk.Frame):
 
    def get_input():
       massList = [mass.get() for mass in masses];
-      print("Your mass inputs:")
+      print("Your mass inputs:");
       print(massList);
       return 0;
