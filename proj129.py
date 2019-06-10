@@ -8,17 +8,12 @@ import numpy as np
 class GUI(object):
 
     # initiation upon GUI being called
-    def __init__(self):
+    def __init__(self, fig, ax):
         u"Program initiates by creating figure and axes, then initiating \
         the sliders and plot methods"
 
         # define matplotlib figure and axis
-        global fig; global ax;
-        fig, ax = plt.subplots(figsize=(6, 6));
-        fig.canvas.set_window_title('Interactive Gravitational Contour Graph');
-        plt.subplots_adjust(left=0.15, bottom=0.25);
-        plt.axis([0, 100, 0, 100]);
-
+        self.fig = fig; self.ax = ax;
         # call on methods to make this work!
         self.sliders();
         self.plot();
@@ -76,25 +71,23 @@ class GUI(object):
         s_massB = Slider(axMassB, 'Mass B', 0.1, 500.0, valinit=50, valstep=10, \
                          color='blue');
 
-        global resetButton; global calcButton;
 
         resetax = plt.axes([0.8, 0.9, 0.1, 0.04]);
-        resetButton = Button(resetax, 'Reset', color=axcolor, \
+        self.resetButton = Button(resetax, 'Reset', color=axcolor, \
                          hovercolor='0.975')
-        resetButton.on_clicked(GUI.reset);
+        self.resetButton.on_clicked(GUI.reset);
 
 
         calcax = plt.axes([0.65, 0.9, 0.15, 0.04]);
-        calcButton = Button(calcax, 'Calculate', color=axcolor, \
+        self.calcButton = Button(calcax, 'Calculate', color=axcolor, \
                         hovercolor='0.975');
-        calcButton.on_clicked(GUI.plot);
+        self.calcButton.on_clicked(GUI.plot);
         return 0;
 
     def reset(val):
         u"Method that defines the Reset Button on the GUI"
 
         print("Resetting!");
-        global resetButton; global calcButton;
         global s_massR; global s_massG; global s_massB;
         s_massR.reset(); s_massG.reset(); s_massB.reset();
         return 0;
@@ -112,4 +105,9 @@ class GUI(object):
 
 
 if __name__ == '__main__':
-    g = GUI();
+    fig, ax = plt.subplots(figsize=(6,6));
+    fig.canvas.set_window_title("Interactive Gravitational Contours");
+    plt.subplots_adjust(left=0.15, bottom=0.25);
+    plt.axis([0, 100, 0, 100]);
+    g = GUI(fig, ax);
+    plt.show();
