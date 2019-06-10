@@ -1,7 +1,10 @@
 #!/usr/bin/python3
+# physics129L capstone project
 
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
+from matplotlib.patches import Circle
+# from particles import Drag
 import numpy as np
 
 
@@ -50,7 +53,7 @@ class GUI(object):
         Pot_c = massB/rc_disp;
 
         Potential = Pot_a+Pot_b+Pot_c;
-        l = ax.contour(X, Y, Potential, 100);
+        l = ax.contour(X, Y, Potential, 100, zorder=2);
         plt.show();
         return 0;
 
@@ -84,12 +87,13 @@ class GUI(object):
         self.calcButton.on_clicked(GUI.plot);
         return 0;
 
-    def reset(val):
+    def reset(self):
         u"Method that defines the Reset Button on the GUI"
 
         print("Resetting!");
         global s_massR; global s_massG; global s_massB;
         s_massR.reset(); s_massG.reset(); s_massB.reset();
+        GUI.plot(self);
         return 0;
 
     def update(self):
@@ -109,5 +113,18 @@ if __name__ == '__main__':
     fig.canvas.set_window_title("Interactive Gravitational Contours");
     plt.subplots_adjust(left=0.15, bottom=0.25);
     plt.axis([0, 100, 0, 100]);
+
+
+    #circle1 = Circle((20, 20), 2, color='red', zorder=1);
+    #circle2 = Circle((40, 40), 2, color='green', zorder=1);
+    #circle3 = Circle((60, 60), 2, color='blue', zorder=1);
+    #circles = [circle1, circle2, circle3];
+
+   # active = [];
+   # for circle in circles:
+    #     ic = Drag(fig, ax, circle);
+     #    ic.connect();
+        # active.append(ic);
+
     g = GUI(fig, ax);
     plt.show();

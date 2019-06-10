@@ -1,6 +1,8 @@
+#!/usr/bin/python3
+# physics129L capstone project;
+
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
-
 
 class Drag(object):
 
@@ -101,6 +103,10 @@ class Drag(object):
         self.fig.canvas.mpl_disconnect(self.cidrelease);
         self.fig.canvas.mpl_disconnect(self.cidmotion);
         return 0;
+
+    def reset():
+        GUI.instance = None;
+
 
 
 
