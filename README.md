@@ -4,7 +4,7 @@
 This is a Python collaboration between me and Hy Ngo for our
 Physics 129L laboratory.
 
-<img src="/img/GUI.png" width = "100"> 
+<img src="/img/GUI.png" width = "600"> 
 
 The goal of this program is to simulate 3 masses in 2 dimensions and graph the gravitational contours among them. This was initially done with the [tkinter](https://github.com/python/cpython/tree/master/Lib/tkinter) library but we preferred to use the matplotlib functionality to do it. The script creates a UI where the mass of each particle can be adjusted using a slider and where its position may also be dragged through the GUI.
 
