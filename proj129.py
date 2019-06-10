@@ -42,20 +42,20 @@ class GUI(object):
         x_a = 20; y_a = 20;
         xa_disp = (x_a-X)**2; ya_disp = (y_a-Y)**2;
         ra_disp = np.sqrt(xa_disp + ya_disp);
-        Force_a = massR/ra_disp;
+        Pot_a = massR/ra_disp;
 
         x_b = 40; y_b = 40;
         xb_disp = (x_b-X)**2; yb_disp = (y_b-Y)**2;
         rb_disp = np.sqrt(xb_disp + yb_disp);
-        Force_b = massG/rb_disp;
+        Pot_b = massG/rb_disp;
 
         x_c = 60; y_c = 60;
         xc_disp = (x_c-X)**2; yc_disp = (y_c-Y)**2;
         rc_disp = np.sqrt(xc_disp + yc_disp);
-        Force_c = massB/rc_disp;
-        Displacement = Force_a+Force_b+Force_c;
+        Pot_c = massB/rc_disp;
 
-        l = ax.contour(X, Y, Displacement, 100);
+        Potential = Pot_a+Pot_b+Pot_c;
+        l = ax.contour(X, Y, Potential, 100);
         plt.show();
         return 0;
 
