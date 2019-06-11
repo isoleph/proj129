@@ -7,7 +7,7 @@ from matplotlib.patches import Circle
 # from particles import Drag
 import numpy as np
 
-
+# define a GUI class with sliders and buttons
 class GUI(object):
 
     # initiation upon GUI being called

@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 
+# create a class to define draggable buttons
 class Drag(object):
 
     def __init__(self, fig, ax, circle):
@@ -28,14 +29,12 @@ class Drag(object):
     def connect(self):
         u"The :connect: method uses the mpl_connect function to define functions to occur when the \
             mouse is clicked."
-
         self.cidpress = self.fig.canvas.mpl_connect('button_press_event', self.on_click);
         self.cidrelease = self.fig.canvas.mpl_connect('button_release_event', self.on_release);
         self.cidmotion = self.fig.canvas.mpl_connect('motion_notify_event', self.on_motion);
         return 0;
 
     def on_click(self, event):
-
         u"""Upon clicking the, :on_click:, this  method will check if the mouse
         clicked within a circle (to allow for dragging) and will see if the click
         event is contained within the axes.
@@ -58,7 +57,6 @@ class Drag(object):
         return 0;
 
     def on_motion(self, event):
-
         u"""The :on_motion: method undergoes a similar identification process as the
         above method, except now it constantly updates and redraws the figure as
         the user drags the circle around. """
@@ -76,7 +74,6 @@ class Drag(object):
         return 0;
 
     def on_release(self, event):
-
         u"""Upon releasing the draggable circle, this method will record and pritn the final
         resting position of the circle. This is intended to return the final value to our 
         proj129 script to update the positions for each mass."""
@@ -97,7 +94,6 @@ class Drag(object):
         return 0;
 
     def disconnect(self):
-
         u"""Disconnects circles when not in use using the mpl_disconnect method"""
         self.fig.canvas.mpl_disconnect(self.cidpress);
         self.fig.canvas.mpl_disconnect(self.cidrelease);
