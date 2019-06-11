@@ -15,7 +15,7 @@ class GUI(object):
     def __init__(self, fig, ax):
         u"Program initiates by creating figure and axes, then initiating \
         the sliders and plot methods"
-        print('Initiating Interactive Module!')
+        print('Initiating Interactive Module!');
         print('\n\tClick and drag one of the masses to relocate it to a new point.');
         print("\tAdjust the mass sliders as desired, and when you're finished click 'Calculate'\n");
         global idn; idn = 0; # keep track of launch number in terminal
@@ -37,7 +37,7 @@ class GUI(object):
         # checks update to get masses from sliders
         massR, massG, massB = GUI.update(self);
 
-        # get data from tokens
+        # get data from particles
         GUI.DataArray = PointData.getArray(self);
         x_a, y_a = GUI.DataArray['red'];
         x_b, y_b = GUI.DataArray['green'];
@@ -46,7 +46,7 @@ class GUI(object):
         print("\tMass A = {} at coordinates {}, {}".format(massR, round(x_a,2),round(y_a,2)));
         print("\tMass B = {} at coordinates {}, {}".format(massG, round(x_b, 2), round(y_b, 2)));
         print("\tMass C = {} at coordinates {}, {}".format(massB, round(x_c,2),round(y_c,2)));
-        # create contour specs for each mass
+        # newton eqns for contours
         x = np.arange(1, 100); y = x.copy();
         X, Y = np.meshgrid(x, y); Z = np.sqrt(X**2+Y**2);
 
@@ -59,13 +59,15 @@ class GUI(object):
         xc_disp = (x_c-X)**2; yc_disp = (y_c-Y)**2;
         rc_disp = np.sqrt(xc_disp + yc_disp);
 
+        # to not display DivideByZero warning
         with np.errstate(all='ignore'):
             Potential = massR/ra_disp + massG/rb_disp + massB/rc_disp;
         l = ax.contour(X, Y, Potential, 150, zorder=1, cmap=plt.cm.get_cmap('Spectral')); # zorder command not functioning
-        ax.patch.set_facecolor('black')
+        ax.patch.set_facecolor('black');
+        # make text boxes
         ax.text(x_a, y_a+10, 'Mass A', bbox=dict(facecolor='white', alpha=0.5));
         ax.text(x_b, y_b+10, 'Mass B', bbox=dict(facecolor='white', alpha=0.5));
-        ax.text(x_c, y_c+10, 'Mass C', bbox=dict(facecolor='white', alpha=0.5))
+        ax.text(x_c, y_c+10, 'Mass C', bbox=dict(facecolor='white', alpha=0.5));
         
         idn += 1;
         return 0;
@@ -73,11 +75,13 @@ class GUI(object):
     # mass sliders for GUI
     def sliders(self):
         u"Method that creates the mass sliders on the bottom of the GUI"
-        axcolor = 'lightgoldenrodyellow'
+        # define slider positions
+        axcolor = 'lightgoldenrodyellow';
         axMassR = plt.axes([0.2, 0.17, 0.65, 0.03], facecolor=axcolor);
         axMassG = plt.axes([0.2, 0.12, 0.65, 0.03], facecolor=axcolor);
         axMassB = plt.axes([0.2, 0.07, 0.65, 0.03], facecolor=axcolor);
 
+        # globalize values from sliders
         global s_massR; global s_massG; global s_massB;
         s_massR = Slider(axMassR, 'Mass A', 0., 1000.0, valinit=500, valstep=10, \
                          color='red');
@@ -86,10 +90,10 @@ class GUI(object):
         s_massB = Slider(axMassB, 'Mass C', 0., 1000.0, valinit=500, valstep=10, \
                          color='blue');
 
-
+        # make buttons
         resetax = plt.axes([0.8, 0.9, 0.1, 0.04]);
         self.resetButton = Button(resetax, 'Reset', color=axcolor, \
-                         hovercolor='0.975')
+                         hovercolor='0.975');
         self.resetButton.on_clicked(GUI.reset);
 
         calcax = plt.axes([0.65, 0.9, 0.15, 0.04]);
@@ -120,7 +124,7 @@ class GUI(object):
             mB = s_massB.val;
             return mR, mG, mB;
         except Exception:
-            return 50, 50, 50; # if sliders not yet activated, give this tuple
+            return 500, 500, 500; # if sliders not yet activated, give this tuple
 
 # run module directly and apply plot preferences
 if __name__ == '__main__':

@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 from scipy.spatial import distance
 
+# create data value to keep track of particles
 global data;
 data = {'red': (20, 20), 'green': (40, 40), 'blue': (60, 60)};
 
@@ -28,7 +29,7 @@ class Drag(object):
 
         # import mpl figures and axes
         self.fig = fig; self.ax = ax;
-        self.ax.axis([0, 100, 0, 100])
+        self.ax.axis([0, 100, 0, 100]);
 
         # create data to track particle
         self.press = None;
@@ -60,9 +61,11 @@ class Drag(object):
         if not contains:
             return None;
 
+        # pass start position for particle to be identified
         Drag.Initiate = event.xdata, event.ydata;
         self.identify(event);
 
+        # store data to define motion of particle
         x0, y0 = self.circ.center;
         self.press = x0, y0, event.xdata, event.ydata;
         # drag integration variables below
@@ -78,10 +81,11 @@ class Drag(object):
         if event.inaxes != self.circ.axes:
             return None;
 
+        # continuous update as particle is dragged
         x0, y0, xpress, ypress = self.press;
         dx = event.xdata - xpress;
         dy = event.ydata - ypress;
-        self.circ.center = (x0+dx, y0+dy)
+        self.circ.center = (x0+dx, y0+dy);
         self.fig.canvas.draw();
         return 0;
 
@@ -91,16 +95,17 @@ class Drag(object):
         proj129 script to update the positions for each mass."""
 
         if event.inaxes != self.circ.axes:
-            return None
+            return None;
         contains, attrd = self.circ.contains(event)
         if not contains:
-            return None
+            return None;
         
         self.press = None;
         self.fig.canvas.draw();
-        # drag integration variables below
+        # store drag stop position
         self.Terminate = (event.xdata, event.ydata);
 
+        # pass stop position to data
         global data;
         data[Drag.identify(self,event)] = self.Terminate;
         print("data:", data);
@@ -119,11 +124,13 @@ class Drag(object):
         u"""This function is created to identify which point was dragged by making use of the \
             scipy.spatial distance function. This function returns a string identifying the object \
                  last left near that point"""
+        # pass drag start position to data
         global data;
         print(self.Initiate)
-        values = list(data.values() );
+        values = list( data.values() );
         closest_index = distance.cdist([self.Initiate], values).argmin();
 
+        # find closest particle to click
         if closest_index == 0:
             print("[Selection] massR selected");
             return 'red';
