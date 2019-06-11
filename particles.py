@@ -58,8 +58,8 @@ class Drag(object):
         if not contains:
             return None;
 
-        Drag.Initiate = event.xdata, event.ydata
-        self.identify(event)
+        Drag.Initiate = event.xdata, event.ydata;
+        self.identify(event);
 
         x0, y0 = self.circ.center;
         self.press = x0, y0, event.xdata, event.ydata;
@@ -104,12 +104,13 @@ class Drag(object):
         print("data:", data);
         return 0;
 
-    def disconnect(self):
-        u"""Disconnects circles when not in use using the mpl_disconnect method"""
-        self.fig.canvas.mpl_disconnect(self.cidpress);
-        self.fig.canvas.mpl_disconnect(self.cidrelease);
-        self.fig.canvas.mpl_disconnect(self.cidmotion);
-        return 0;
+    # was only useful during debugging; not friendly with the for loop in proj129's __main__
+    # def disconnect(self):
+       #  u"""Disconnects circles when not in use using the mpl_disconnect method"""
+       #  self.fig.canvas.mpl_disconnect(self.cidpress);
+       #  self.fig.canvas.mpl_disconnect(self.cidrelease);
+       #  self.fig.canvas.mpl_disconnect(self.cidmotion);
+       #  return 0;
 
     # update locations after motion
     def identify(self, event):
@@ -132,6 +133,7 @@ class Drag(object):
             return 'blue';
 
 
+# run module directly and apply preferences
 if __name__ == '__main__':
     fig = plt.figure();
     ax = fig.add_subplot(111);

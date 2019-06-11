@@ -119,7 +119,7 @@ class GUI(object):
         except Exception:
             return 50, 50, 50; # if sliders not yet activated, give this tuple
 
-
+# run module directly and apply plot preferences
 if __name__ == '__main__':
     fig, ax = plt.subplots(figsize=(6,6));
     fig.canvas.set_window_title("Interactive Gravitational Contours");
