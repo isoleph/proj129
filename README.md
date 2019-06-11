@@ -10,6 +10,8 @@ The goal of this program is to simulate 3 masses in 2 dimensions and graph the g
 
 This project takes inspiration from this [Maple script](https://climate.ucdavis.edu/GravityProblem.pdf) from UC Davis. 
 
+We also invite people to use the particles.py file for click and drag in matplotlib. I couldn't personally find a nice, readable version to make draggable buttons, so feel free to use this code!
+
 # Completed Tasks
 
 - [X] Tokens for each particle
