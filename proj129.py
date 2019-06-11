@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 from matplotlib.patches import Circle
 from matplotlib.collections import PatchCollection
-from particles import Drag, PointData
+from particles import Drag, PointData # custom class
 import numpy as np
 
 # define a GUI class with sliders and buttons

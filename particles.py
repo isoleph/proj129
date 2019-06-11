@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # physics129L capstone project;
+# custom classes: credit Angel V.
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
