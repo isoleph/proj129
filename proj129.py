@@ -14,7 +14,6 @@ class GUI(object):
     def __init__(self, fig, ax):
         u"Program initiates by creating figure and axes, then initiating \
         the sliders and plot methods"
-
         # define matplotlib figure and axis
         self.fig = fig; self.ax = ax;
         # call on methods to make this work!
@@ -26,13 +25,11 @@ class GUI(object):
     def plot(self):
         u"Method to update masses from sliders and show \
         results on GUI."
-
         print("Calculating...");
-        ax.clear();  # prevents contours from stacking
 
+        ax.clear();  # prevents contours from stacking
         # checks update to get masses from sliders
         massR, massG, massB = GUI.update(self);
-
         # create contour specs for each mass
         x = np.arange(1, 10**2); y = x.copy();
         X, Y = np.meshgrid(x, y); Z = np.sqrt(X**2+Y**2);
@@ -42,13 +39,11 @@ class GUI(object):
         ra_disp = np.sqrt(xa_disp + ya_disp);
         with np.errstate(all='ignore'): # hide divide by zero error
             Pot_a = massR/ra_disp;
-
         x_b = 40; y_b = 40;
         xb_disp = (x_b-X)**2; yb_disp = (y_b-Y)**2;
         rb_disp = np.sqrt(xb_disp + yb_disp);
         with np.errstate(all='ignore'):
             Pot_b = massG/rb_disp;
-
         x_c = 60; y_c = 60;
         xc_disp = (x_c-X)**2; yc_disp = (y_c-Y)**2;
         rc_disp = np.sqrt(xc_disp + yc_disp);
@@ -60,6 +55,7 @@ class GUI(object):
         plt.show();
         return 0;
 
+    # mass sliders for GUI
     def sliders(self):
         u"Method that creates the mass sliders on the bottom of the GUI"
 
@@ -83,13 +79,13 @@ class GUI(object):
                          hovercolor='0.975')
         self.resetButton.on_clicked(GUI.reset);
 
-
         calcax = plt.axes([0.65, 0.9, 0.15, 0.04]);
         self.calcButton = Button(calcax, 'Calculate', color=axcolor, \
                         hovercolor='0.975');
         self.calcButton.on_clicked(GUI.plot);
         return 0;
 
+    # reset function to be called
     def reset(self):
         u"Method that defines the Reset Button on the GUI"
 
@@ -99,6 +95,7 @@ class GUI(object):
         GUI.plot(self);
         return 0;
 
+    # update mass from sliders
     def update(self):
         u"Method that updates all mass values from mass sliders"
         global s_massR; global s_massG; global s_massB;
