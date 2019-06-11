@@ -18,4 +18,5 @@ This project takes inspiration from this [Maple script](https://climate.ucdavis.
 - [x] Writing in Newtonian equations
 - [x] Matplotlib render of contour plots
 - [x] Integration of Particle Tracking and Graphing
-- [ ] Refinement as needed; e.g. Circle Patches on top
+- [x] Patch displays no longer necessary!
+- [ ] RPi testing and debugging
