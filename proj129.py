@@ -41,9 +41,9 @@ class GUI(object):
         x_b, y_b = GUI.DataArray['green'];
         x_c, y_c = GUI.DataArray['blue'];
 
-        print("\tmassR = {} at coordinates {}, {}".format(massR, x_a,y_a));
-        print("\tmassG = {} at coordinates {}, {}".format(massG, x_b, y_b));
-        print("\tmassB = {} at coordinates {}, {}".format(massB, x_c, y_c));
+        print("\tmassR = {} at coordinates {}, {}".format(massR, round(x_a,2),round(y_a,2)));
+        print("\tmassG = {} at coordinates {}, {}".format(massG, round(x_b, 2), round(y_b, 2)));
+        print("\tmassB = {} at coordinates {}, {}".format(massB, round(x_c,2),round(y_c,2)));
         # create contour specs for each mass
         x = np.arange(1, 10**2); y = x.copy();
         X, Y = np.meshgrid(x, y); Z = np.sqrt(X**2+Y**2);
@@ -126,9 +126,9 @@ if __name__ == '__main__':
     plt.subplots_adjust(left=0.15, bottom=0.25);
     plt.axis([0, 100, 0, 100]);
 
-    circle1 = Circle((20, 20), 5, color='red', zorder=50);
-    circle2 = Circle((40, 40), 5, color='green', zorder=50);
-    circle3 = Circle((60, 60), 5, color='blue', zorder=50);
+    circle1 = Circle((20, 20), 10, color='red', zorder=50);
+    circle2 = Circle((40, 40), 10, color='green', zorder=50);
+    circle3 = Circle((60, 60), 10, color='blue', zorder=50);
     circles = [circle1, circle2, circle3];
 
     active = [];

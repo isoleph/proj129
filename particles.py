@@ -19,6 +19,7 @@ class PointData(object):
 
 
 
+
 # create a class to define draggable buttons
 class Drag(object):
 
@@ -118,13 +119,15 @@ class Drag(object):
         global data;
         values = list(data.values() );
         closest_index = distance.cdist([self.Initiate], values).argmin();
-        print(closest_index)
 
         if closest_index == 0:
+            print("[Selection] massR selected");
             return 'red';
         elif closest_index == 1:
+            print("[Selection] massG selected");
             return 'green';
         elif closest_index == 2:
+            print("[Selection] massB selected");
             return 'blue';
 
 
