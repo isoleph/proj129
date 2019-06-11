@@ -17,7 +17,7 @@ class GUI(object):
         the sliders and plot methods"
         print('Initiating Interactive Module!')
         print('\n\tClick and drag one of the masses to relocate it to a new point.');
-        print("\tAdjust the mass sliders as desired and when you're finished click 'Calculate'\n");
+        print("\tAdjust the mass sliders as desired, and when you're finished click 'Calculate'\n");
         global idn; idn = 0; # keep track of launch number in terminal
         # define matplotlib figure and axis
         self.fig = fig; self.ax = ax;
@@ -43,11 +43,11 @@ class GUI(object):
         x_b, y_b = GUI.DataArray['green'];
         x_c, y_c = GUI.DataArray['blue'];
 
-        print("\tmassR = {} at coordinates {}, {}".format(massR, round(x_a,2),round(y_a,2)));
-        print("\tmassG = {} at coordinates {}, {}".format(massG, round(x_b, 2), round(y_b, 2)));
-        print("\tmassB = {} at coordinates {}, {}".format(massB, round(x_c,2),round(y_c,2)));
+        print("\tMass A = {} at coordinates {}, {}".format(massR, round(x_a,2),round(y_a,2)));
+        print("\tMass B = {} at coordinates {}, {}".format(massG, round(x_b, 2), round(y_b, 2)));
+        print("\tMass C = {} at coordinates {}, {}".format(massB, round(x_c,2),round(y_c,2)));
         # create contour specs for each mass
-        x = np.arange(1, 10**2); y = x.copy();
+        x = np.arange(1, 100); y = x.copy();
         X, Y = np.meshgrid(x, y); Z = np.sqrt(X**2+Y**2);
 
         xa_disp = (x_a-X)**2; ya_disp = (y_a-Y)**2;
@@ -61,10 +61,13 @@ class GUI(object):
 
         with np.errstate(all='ignore'):
             Potential = massR/ra_disp + massG/rb_disp + massB/rc_disp;
-        l = ax.contour(X, Y, Potential, 100, zorder=1); # zorder command not functioning
-
+        l = ax.contour(X, Y, Potential, 150, zorder=1, cmap=plt.cm.get_cmap('Spectral')); # zorder command not functioning
+        ax.patch.set_facecolor('black')
+        ax.text(x_a, y_a+10, 'Mass A', bbox=dict(facecolor='white', alpha=0.5));
+        ax.text(x_b, y_b+10, 'Mass B', bbox=dict(facecolor='white', alpha=0.5));
+        ax.text(x_c, y_c+10, 'Mass C', bbox=dict(facecolor='white', alpha=0.5))
+        
         idn += 1;
-        plt.show();
         return 0;
 
     # mass sliders for GUI
@@ -76,11 +79,11 @@ class GUI(object):
         axMassB = plt.axes([0.2, 0.07, 0.65, 0.03], facecolor=axcolor);
 
         global s_massR; global s_massG; global s_massB;
-        s_massR = Slider(axMassR, 'Mass R', 0., 500.0, valinit=50, valstep=10, \
+        s_massR = Slider(axMassR, 'Mass A', 0., 1000.0, valinit=500, valstep=10, \
                          color='red');
-        s_massG = Slider(axMassG, 'Mass G', 0., 500.0, valinit=50, valstep=10, \
+        s_massG = Slider(axMassG, 'Mass B', 0., 1000.0, valinit=500, valstep=10, \
                          color='green');
-        s_massB = Slider(axMassB, 'Mass B', 0., 500.0, valinit=50, valstep=10, \
+        s_massB = Slider(axMassB, 'Mass C', 0., 1000.0, valinit=500, valstep=10, \
                          color='blue');
 
 
@@ -126,9 +129,9 @@ if __name__ == '__main__':
     plt.subplots_adjust(left=0.15, bottom=0.25);
     plt.axis([0, 100, 0, 100]);
 
-    circle1 = Circle((20, 20), 10, color='red', zorder=50); # zorder commands not functioning
-    circle2 = Circle((40, 40), 10, color='green', zorder=50);
-    circle3 = Circle((60, 60), 10, color='blue', zorder=50);
+    circle1 = Circle((20, 20), 5, color='red', zorder=50); # zorder commands not functioning
+    circle2 = Circle((40, 40), 5, color='green', zorder=50);
+    circle3 = Circle((60, 60), 5, color='blue', zorder=50);
     circles = [circle1, circle2, circle3];
 
     active = [];

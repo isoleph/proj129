@@ -27,6 +27,7 @@ class Drag(object):
 
         # import mpl figures and axes
         self.fig = fig; self.ax = ax;
+        self.ax.axis([0, 100, 0, 100])
 
         # create data to track particle
         self.press = None;
@@ -80,7 +81,7 @@ class Drag(object):
         dx = event.xdata - xpress;
         dy = event.ydata - ypress;
         self.circ.center = (x0+dx, y0+dy)
-        self.fig.canvas.draw_idle();
+        self.fig.canvas.draw();
         return 0;
 
     def on_release(self, event):
@@ -95,7 +96,7 @@ class Drag(object):
             return None
         
         self.press = None;
-        self.fig.canvas.draw_idle();
+        self.fig.canvas.draw();
         # drag integration variables below
         self.Terminate = (event.xdata, event.ydata);
 
@@ -137,7 +138,7 @@ class Drag(object):
 if __name__ == '__main__':
     fig = plt.figure();
     ax = fig.add_subplot(111);
-    ax.axis([0, 100, 0, 100]);
+    ax.axis([0, 80, 0, 80]);
     ax.set_title('Preliminary Circle Module');
 
     circle1 = Circle((20,20), 2, color='red');
