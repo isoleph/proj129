@@ -17,5 +17,5 @@ This project takes inspiration from this [Maple script](https://climate.ucdavis.
 - [x] Mass sliders for input in GUI
 - [x] Writing in Newtonian equations
 - [x] Matplotlib render of contour plots
-- [ ] Integration of Particle Tracking and Graphing
-- [ ] Refinement as needed
+- [x] Integration of Particle Tracking and Graphing
+- [ ] Refinement as needed; e.g. Circle Patches on top
