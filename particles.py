@@ -6,7 +6,7 @@ from matplotlib.patches import Circle
 from scipy.spatial import distance
 
 global data;
-data = {'red': (20, 20), 'green': (60, 60), 'blue': (80, 80)};
+data = {'red': (20, 20), 'green': (40, 40), 'blue': (60, 60)};
 
 # ad hoc class to access data array from other script
 class PointData(object):
@@ -117,6 +117,7 @@ class Drag(object):
             scipy.spatial distance function. This function returns a string identifying the object \
                  last left near that point"""
         global data;
+        print(self.Initiate)
         values = list(data.values() );
         closest_index = distance.cdist([self.Initiate], values).argmin();
 

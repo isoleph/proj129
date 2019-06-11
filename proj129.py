@@ -15,7 +15,9 @@ class GUI(object):
     def __init__(self, fig, ax):
         u"Program initiates by creating figure and axes, then initiating \
         the sliders and plot methods"
-        print('\nInitiating Interactive Module!')
+        print('Initiating Interactive Module!')
+        print('\n\tClick and drag one of the masses to relocate it to a new point.');
+        print("\tAdjust the mass sliders as desired and when you're finished click 'Calculate'\n");
         global idn; idn = 0; # keep track of launch number in terminal
         # define matplotlib figure and axis
         self.fig = fig; self.ax = ax;
@@ -59,7 +61,7 @@ class GUI(object):
 
         with np.errstate(all='ignore'):
             Potential = massR/ra_disp + massG/rb_disp + massB/rc_disp;
-        l = ax.contour(X, Y, Potential, 100, zorder=1);
+        l = ax.contour(X, Y, Potential, 100, zorder=1); # zorder command not functioning
 
         idn += 1;
         plt.show();
@@ -99,11 +101,10 @@ class GUI(object):
         print("Resetting!");
         global s_massR; global s_massG; global s_massB;
         s_massR.reset(); s_massG.reset(); s_massB.reset();
-        GUI.DataArray['red'] = (20,20)
-        GUI.DataArray['green'] = (60,60)
-        GUI.DataArray['blue'] = (80,80)
+        GUI.DataArray['red'] = (20,20);
+        GUI.DataArray['green'] = (60,60);
+        GUI.DataArray['blue'] = (80,80);
         GUI.plot(self);
-
         return 0;
 
     # update mass from sliders
@@ -119,14 +120,13 @@ class GUI(object):
             return 50, 50, 50; # if sliders not yet activated, give this tuple
 
 
-
 if __name__ == '__main__':
     fig, ax = plt.subplots(figsize=(6,6));
     fig.canvas.set_window_title("Interactive Gravitational Contours");
     plt.subplots_adjust(left=0.15, bottom=0.25);
     plt.axis([0, 100, 0, 100]);
 
-    circle1 = Circle((20, 20), 10, color='red', zorder=50);
+    circle1 = Circle((20, 20), 10, color='red', zorder=50); # zorder commands not functioning
     circle2 = Circle((40, 40), 10, color='green', zorder=50);
     circle3 = Circle((60, 60), 10, color='blue', zorder=50);
     circles = [circle1, circle2, circle3];
