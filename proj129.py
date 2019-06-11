@@ -58,14 +58,12 @@ class GUI(object):
     # mass sliders for GUI
     def sliders(self):
         u"Method that creates the mass sliders on the bottom of the GUI"
-
         axcolor = 'lightgoldenrodyellow'
         axMassR = plt.axes([0.2, 0.17, 0.65, 0.03], facecolor=axcolor);
         axMassG = plt.axes([0.2, 0.12, 0.65, 0.03], facecolor=axcolor);
         axMassB = plt.axes([0.2, 0.07, 0.65, 0.03], facecolor=axcolor);
 
         global s_massR; global s_massG; global s_massB;
-
         s_massR = Slider(axMassR, 'Mass R', 0.1, 500.0, valinit=50, valstep=10, \
                          color='red');
         s_massG = Slider(axMassG, 'Mass G', 0.1, 500.0, valinit=50, valstep=10, \
@@ -88,7 +86,6 @@ class GUI(object):
     # reset function to be called
     def reset(self):
         u"Method that defines the Reset Button on the GUI"
-
         print("Resetting!");
         global s_massR; global s_massG; global s_massB;
         s_massR.reset(); s_massG.reset(); s_massB.reset();
@@ -114,7 +111,6 @@ if __name__ == '__main__':
     plt.subplots_adjust(left=0.15, bottom=0.25);
     plt.axis([0, 100, 0, 100]);
 
-
     #circle1 = Circle((20, 20), 2, color='red', zorder=1);
     #circle2 = Circle((40, 40), 2, color='green', zorder=1);
     #circle3 = Circle((60, 60), 2, color='blue', zorder=1);
@@ -125,6 +121,5 @@ if __name__ == '__main__':
     #     ic = Drag(fig, ax, circle);
      #    ic.connect();
         # active.append(ic);
-
     g = GUI(fig, ax);
     plt.show();

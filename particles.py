@@ -90,7 +90,6 @@ class Drag(object):
         # drag integration variables below
         # global Terminate;
         # Terminate = (event.xdata, event.ydata);
-
         return 0;
 
     def disconnect(self):
