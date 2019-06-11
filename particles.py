@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # physics129L capstone project;
 
 import matplotlib.pyplot as plt
@@ -7,9 +7,9 @@ from matplotlib.patches import Circle
 class Drag(object):
 
     def __init__(self, fig, ax, circle):
-        u"""Upon initiation the Drag class will import the relevant \
-        figure and axis, and then it will pull in the items to be  \
-        graphed and display them to the window."""
+        u"""Upon initiation the Drag class will input the relevant mpl \
+        figure, axis, and circle elements and then it will \
+        display them to the window."""
 
         # import mpl figures and axes
         self.fig = fig; self.ax = ax;
@@ -26,7 +26,7 @@ class Drag(object):
     
 
     def connect(self):
-        u"The :connect: method uses the mpl_connect methods to define functions to occur when the \
+        u"The :connect: method uses the mpl_connect function to define functions to occur when the \
             mouse is clicked."
 
         self.cidpress = self.fig.canvas.mpl_connect('button_press_event', self.on_click);
@@ -36,7 +36,7 @@ class Drag(object):
 
     def on_click(self, event):
 
-        u"""Upon clicking the, :on_click: method will check to identify if the mouse
+        u"""Upon clicking the, :on_click:, this  method will check if the mouse
         clicked within a circle (to allow for dragging) and will see if the click
         event is contained within the axes.
         

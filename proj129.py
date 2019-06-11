@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # physics129L capstone project
 
 import matplotlib.pyplot as plt
