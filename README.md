@@ -10,7 +10,7 @@ The goal of this program is to simulate 3 masses in 2 dimensions and graph the g
 
 This project takes inspiration from this [Maple script](https://climate.ucdavis.edu/GravityProblem.pdf) from UC Davis. 
 
-# Current Tasks
+# Completed Tasks
 
 - [X] Tokens for each particle
 - [X] Position Tracking for each Mass
@@ -18,5 +18,5 @@ This project takes inspiration from this [Maple script](https://climate.ucdavis.
 - [x] Writing in Newtonian equations
 - [x] Matplotlib render of contour plots
 - [x] Integration of Particle Tracking and Graphing
-- [x] Patch displays no longer necessary!
-- [ ] RPi testing and debugging
+- [ ] Debugging
+    - Is anything ever truly bug-free? 
