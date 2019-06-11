@@ -52,9 +52,9 @@ class Drag(object):
         print(event.xdata, event.ydata)
         x0, y0 = self.circ.center;
         self.press = x0, y0, event.xdata, event.ydata;
-        global Initiate;
-        Initiate = (event.xdata, event.ydata);
-
+        # drag integration variables below
+        # global Initiate;
+        # Initiate = (event.xdata, event.ydata);
         return 0;
 
     def on_motion(self, event):
@@ -90,9 +90,9 @@ class Drag(object):
         self.press = None;
         self.fig.canvas.draw();
         print(event.xdata, event.ydata)
-
-        global Terminate;
-        Terminate = (event.xdata, event.ydata);
+        # drag integration variables below
+        # global Terminate;
+        # Terminate = (event.xdata, event.ydata);
 
         return 0;
 
@@ -103,11 +103,6 @@ class Drag(object):
         self.fig.canvas.mpl_disconnect(self.cidrelease);
         self.fig.canvas.mpl_disconnect(self.cidmotion);
         return 0;
-
-    def reset():
-        GUI.instance = None;
-
-
 
 
 if __name__ == '__main__':
