@@ -17,9 +17,6 @@ class PointData(object):
         global data;
         return data;
 
-
-
-
 # create a class to define draggable buttons
 class Drag(object):
 
@@ -116,6 +113,9 @@ class Drag(object):
 
     # update locations after motion
     def identify(self, event):
+        u"""This function is created to identify which point was dragged by making use of the \
+            scipy.spatial distance function. This function returns a string identifying the object \
+                 last left near that point"""
         global data;
         values = list(data.values() );
         closest_index = distance.cdist([self.Initiate], values).argmin();
