@@ -109,8 +109,8 @@ class GUI(object):
         global s_massR; global s_massG; global s_massB;
         s_massR.reset(); s_massG.reset(); s_massB.reset();
         GUI.DataArray['red'] = (20,20);
-        GUI.DataArray['green'] = (60,60);
-        GUI.DataArray['blue'] = (80,80);
+        GUI.DataArray['green'] = (40,40);
+        GUI.DataArray['blue'] = (60,60);
         GUI.plot(self);
         return 0;
 
