@@ -1,5 +1,5 @@
 
-# <img src="/img/snek.jpg" width="25"> proj129 
+# <img src="/img/snek.jpg" width="25"> Interactive Gravitational Contour Plots 
 *Capstone project for UCSB Physics 129L*
 
 <div align="center">
@@ -14,7 +14,7 @@
 
 </div>
 
-The goal of this program is to simulate 3 masses in 2 dimensions and graph the gravitational contours among them. This was initially done with the [tkinter](https://github.com/python/cpython/tree/master/Lib/tkinter) library but we preferred to use the matplotlib functionality to do it. The script creates a UI where the mass of each particle can be adjusted using a slider and where its position may also be dragged through the GUI.
+This program simulates 3 masses in 2 dimensions and graphs the gravitational contours between them. This was initially done with the [tkinter](https://github.com/python/cpython/tree/master/Lib/tkinter) library but we preferred to use the matplotlib functionality to do it. The script creates a UI where the mass of each particle can be adjusted using a slider and where its position may also be dragged through the GUI.
 
 This project takes inspiration from this [Maple script](https://climate.ucdavis.edu/GravityProblem.pdf) from UC Davis. 
 
