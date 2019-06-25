@@ -20,7 +20,7 @@ This project takes inspiration from this [Maple script](https://climate.ucdavis.
 
 We also invite people to use the particles.py file for click and drag in matplotlib. I couldn't personally find a nice, readable version to make draggable buttons, so feel free to use this code!
 
-# Completed Tasks
+## 📝 Completed Tasks
 
 - [X] Tokens for each particle
 - [X] Position Tracking for each Mass
