@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-chmod +x particles.py
-chmod +x proj129.py
-exec ./proj129.py
