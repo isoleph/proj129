@@ -6,7 +6,7 @@
 
 <img src="/img/GUI.png" width = 450> 
   
-  [![Status](https://img.shields.io/badge/status-active-success.svg)]()
+  [![Status](https://img.shields.io/badge/status-inactive-success.svg)]()
   [![GitHub Issues](https://img.shields.io/github/issues/isoleph/proj129.svg)](https://github.com/isoleph/proj129/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/isoleph/proj129.svg)](https://github.com/isoleph/proj129/pulls)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
