@@ -5,11 +5,11 @@
 
 <div align = 'center'>
 <img src="/img/GUI.png" width = "600"> 
-  [![Status](https://img.shields.io/badge/status-inactive-success.svg)]()
-  [![GitHub Issues](https://img.shields.io/github/issues/isoleph/proj129.svg)](https://github.com/isoleph/proj129/issues)
-  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/isoleph/proj129.svg)](https://github.com/isoleph/proj129/pulls)
-  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-  [![Tweet](https://img.shields.io/twitter/url/https/shields.io.svg?style=social)](https://twitter.com/risvoi)
+  ![Status](https://img.shields.io/badge/status-inactive-success.svg)]()
+  ![GitHub Issues](https://img.shields.io/github/issues/isoleph/proj129.svg)](https://github.com/isoleph/proj129/issues)
+  ![GitHub Pull Requests](https://img.shields.io/github/issues-pr/isoleph/proj129.svg)](https://github.com/isoleph/proj129/pulls)
+  ![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+  ![Tweet](https://img.shields.io/twitter/url/https/shields.io.svg?style=social)](https://twitter.com/risvoi)
 </div>
 
 The goal of this program is to simulate 3 masses in 2 dimensions and graph the gravitational contours among them. This was initially done with the [tkinter](https://github.com/python/cpython/tree/master/Lib/tkinter) library but we preferred to use the matplotlib functionality to do it. The script creates a UI where the mass of each particle can be adjusted using a slider and where its position may also be dragged through the GUI.
