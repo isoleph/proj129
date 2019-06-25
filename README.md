@@ -4,7 +4,7 @@
 
 <div align="center">
 
-<img src="/img/GUI.png" width = 450> 
+<img src="/img/GUI.png" width = 350> 
   
   [![Status](https://img.shields.io/badge/status-inactive-success.svg)]()
   [![GitHub Issues](https://img.shields.io/github/issues/isoleph/proj129.svg)](https://github.com/isoleph/proj129/issues)
