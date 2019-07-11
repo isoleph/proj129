@@ -111,6 +111,7 @@ class GUI(object):
         GUI.DataArray['red'] = (20,20);
         GUI.DataArray['green'] = (40,40);
         GUI.DataArray['blue'] = (60,60);
+        # PointData.resetAll(fig,ax,Circle)
         GUI.plot(self);
         return 0;
 

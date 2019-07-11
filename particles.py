@@ -19,6 +19,13 @@ class PointData(object):
         global data;
         return data;
 
+    # reset everything
+    """def resetAll(self):
+        global data; global ic;
+        data = {'red': (20, 20), 'green': (40, 40), 'blue': (60, 60)};
+        a = Drag();
+        return 0;"""
+
 # create a class to define draggable buttons
 class Drag(object):
 
@@ -156,6 +163,7 @@ if __name__ == '__main__':
 
     active = [];
     for circle in circles:
+         global ic;
          ic = Drag(fig, ax, circle);
          active.append(ic);
 
