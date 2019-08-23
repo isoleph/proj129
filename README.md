@@ -8,7 +8,7 @@
   
   [![Status](https://img.shields.io/badge/status-inactive-success.svg)]()
   [![GitHub Issues](https://img.shields.io/github/issues/isoleph/proj129.svg)](https://github.com/isoleph/proj129/issues)
-  [![GitHub Pull Requests](https://img.shields.io/github/issues/isoleph/proj129?label=Pull%20Requests)](https://github.com/isoleph/proj129/pulls)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/isoleph/proj129)](https://github.com/isoleph/proj129/pulls)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
   [![Tweet](https://img.shields.io/twitter/url/https/shields.io.svg?style=social)](https://twitter.com/risvoi)
 
