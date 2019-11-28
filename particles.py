@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
-# physics129L capstone project;
-# custom classes: credit Angel V.
+# -*- coding: utf-8 -*-
+"""
+    proj129.particles
+    ~~~~~~~~~~~~~~~~~
+    Custom class to click and drag particles in real 
+        time with position tracking
+
+    :copyright: (c) 2019 by Angel A. Valdenegro
+    :license: MIT LICENSE, see LICENSE for more details.
+"""
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle

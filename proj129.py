@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # physics129L capstone project
 
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 from matplotlib.patches import Circle
 from matplotlib.collections import PatchCollection
-from particles import Drag, PointData # custom class
 import numpy as np
+from particles import Drag, PointData # custom class
 
 # define a GUI class with sliders and buttons
 class GUI(object):
@@ -147,3 +148,4 @@ if __name__ == '__main__':
     
     g = GUI(fig, ax);
     plt.show();
+
